@@ -17,7 +17,7 @@ public class HomeController: Controller
 
     [ResponseCacheAttribute(
         Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error() => this.View(model: new ErrorViewModel()
+    public IActionResult Error() => this.View(model: new Error()
         { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
     #endregion
 }
