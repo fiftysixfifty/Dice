@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc ;
+using MVCViewProject.Models    ;
 using System.Diagnostics       ;
 using MVCViewProject.ViewModels;
 
@@ -17,9 +18,11 @@ public class HomeController: Controller
 
     [HttpPostAttribute                ()]
     [ValidateAntiForgeryTokenAttribute()]
-    public string RollList(MVCViewProject.ViewModels.Index indexViewModel)
+    public string? RollList(MVCViewProject.ViewModels.Index indexViewModel)
     {
-        return "Hello world";
+        PairRollList pairRollList = new Roller(indexViewModel: indexViewModel).Roll();
+
+        return pairRollList.ToString();
     }
 
     [ResponseCacheAttribute(
