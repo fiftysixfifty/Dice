@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics      ;
-using MVCViewProject.Models   ;
+﻿using Microsoft.AspNetCore.Mvc ;
+using System.Diagnostics       ;
+using MVCViewProject.ViewModels;
 
 namespace MVCViewProject.Controllers;
 
