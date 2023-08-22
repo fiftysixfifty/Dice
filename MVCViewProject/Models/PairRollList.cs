@@ -4,7 +4,7 @@ namespace MVCViewProject.Models;
 
 internal class PairRollList: System.Collections.Generic.List<PairRoll>
 {
-	internal PairRollList(int capacity): base(capacity: capacity) {}
+    internal PairRollList(int capacity): base(capacity: capacity) {}
 
     public override string ToString()
     {

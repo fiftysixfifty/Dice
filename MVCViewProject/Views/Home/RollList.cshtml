@@ -1,0 +1,28 @@
+﻿@using MVCViewProject.Models;
+
+@model PairRollList
+
+@{
+    this.ViewData[index: "Title"] = "Roll List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Roll List</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pair Roll</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (PairRoll pairRoll in this.Model)
+        {
+            <tr>
+                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                    pairRoll.Roll))</td>
+            </tr>
+        }
+    </tbody>
+</table>

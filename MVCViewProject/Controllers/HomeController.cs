@@ -18,11 +18,11 @@ public class HomeController: Controller
 
     [HttpPostAttribute                ()]
     [ValidateAntiForgeryTokenAttribute()]
-    public string? RollList(MVCViewProject.ViewModels.Index indexViewModel)
+    public IActionResult RollList(MVCViewProject.ViewModels.Index indexViewModel)
     {
         PairRollList pairRollList = new Roller(indexViewModel: indexViewModel).Roll();
 
-        return pairRollList.ToString();
+        return this.View(model: pairRollList);
     }
 
     [ResponseCacheAttribute(

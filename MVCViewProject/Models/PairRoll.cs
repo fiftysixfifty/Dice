@@ -2,13 +2,12 @@
 
 internal class PairRoll
 {
-    #region Fields
     private readonly Pair pair;
-	private readonly byte roll;
-    #endregion
+
+    public byte Roll { get; }
 
     internal PairRoll(Pair pair, byte roll): base()
-	{ this.pair = pair; this.roll = roll; }
+    { this.pair = pair; this.Roll = roll; }
 
-    public override string ToString() => $"{this.pair.ToString()},{this.roll}";
+    public override string ToString() => $"{this.pair.ToString()},{this.Roll}";
 }
