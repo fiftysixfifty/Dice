@@ -15,6 +15,13 @@ public class HomeController: Controller
     public IActionResult Index  () => this.View();
     public IActionResult Privacy() => this.View();
 
+    [HttpPostAttribute                ()]
+    [ValidateAntiForgeryTokenAttribute()]
+    public string RollList(MVCViewProject.ViewModels.Index indexViewModel)
+    {
+        return "Hello world";
+    }
+
     [ResponseCacheAttribute(
         Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error() => this.View(model: new Error()
