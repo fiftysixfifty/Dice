@@ -1,9 +1,80 @@
-﻿@{
+﻿@model MVCViewProject.ViewModels.Index
+
+@{
     this.ViewData[index: "Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps
-        with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Dice Roller</h1>
 </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="@("ResultList")">
+            <div class="text-danger"
+            asp-validation-summary="@(ValidationSummary.ModelOnly)" />
+
+            <table cellpadding="10">
+                <thead>
+                    <tr>
+                        <th width="40%" />
+                        <th width="30%">First Die</th>
+                        <th width="30%">Second Die</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Favored face:</td>
+                        <td>
+                            <input asp-for="@(this.Model.FirstFavoredFace)"
+                                class="form-control" autofocus="autofocus" value="@(1)"
+                                min="1" max="6" />
+                            <span asp-validation-for="@(this.Model.FirstFavoredFace)"
+                                class="text-danger" />
+                        </td>
+                        <td>
+                            <input asp-for="@(this.Model.SecondFavoredFace)"
+                                class="form-control" value="@(1)" min="1" max="6" />
+                            <span asp-validation-for="@(this.Model.SecondFavoredFace)"
+                                class="text-danger" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Favor factor:</td>
+                        <td>
+                            <input asp-for="@(this.Model.FirstFavorFactor)"
+                                class="form-control" value="@(1)" min="1" max="5" />
+                            <span asp-validation-for="@(this.Model.FirstFavorFactor)"
+                                class="text-danger" />
+                        </td>
+                        <td>
+                            <input asp-for="@(this.Model.SecondFavorFactor)"
+                                class="form-control" value="@(1)" min="1" max="5" />
+                            <span asp-validation-for="@(this.Model.SecondFavorFactor)"
+                                class="text-danger" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="white-space: nowrap;">Number of times to roll:</td>
+                        <td colspan="2">
+                            <input asp-for="@(this.Model.NumberOfTimesToRoll)"
+                                class="form-control" value="@(1)" min="1" max="255" />
+                            <span asp-validation-for="@(this.Model.NumberOfTimesToRoll)"
+                                class="text-danger" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <input type="submit" value="Roll" class="btn btn-primary" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await this.Html.RenderPartialAsync(
+           partialViewName: "_ValidationScriptsPartial"); }
+}
