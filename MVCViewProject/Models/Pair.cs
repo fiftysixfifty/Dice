@@ -2,14 +2,19 @@
 
 internal class Pair
 {
-    private readonly Die firstDie, secondDie;
+    #region Properties
+    internal Die FirstDie  { get; }
+    internal Die SecondDie { get; }
+    #endregion
 
     internal Pair(Die firstDie, Die secondDie): base()
-    { this.firstDie = firstDie; this.secondDie = secondDie; }
+    { this.FirstDie = firstDie; this.SecondDie = secondDie; }
+
+    #region Methods
+    public override string ToString() => $"{this.FirstDie},{this.SecondDie}";
 
     internal PairRoll Roll() => new PairRoll(
         pair: this                                                 ,
-        roll: (byte) (this.firstDie.Roll() + this.secondDie.Roll()));
-
-    public override string ToString() => $"{this.firstDie},{this.secondDie}";
+        roll: (byte) (this.FirstDie.Roll() + this.SecondDie.Roll()));
+    #endregion
 }

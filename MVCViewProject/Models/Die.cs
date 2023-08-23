@@ -4,12 +4,14 @@ internal class Die
 {
     private const byte maxFaceValue = 6;
 
-    #region Fields
-    private readonly byte    favoredFace, favorFactor;
-    private          Random? random = null           ;
-    #endregion
+    private Random? random = null;
+
+    #region Properties
+    internal byte FavoredFace { get; }
+    internal byte FavorFactor { get; }
 
     private Random Random => this.random ??= new Random();
+    #endregion
 
     #region Private Methods
     private static byte Valid(byte maxValue, byte value)
@@ -28,17 +30,19 @@ internal class Die
 
     internal Die(byte favoredFace, byte favorFactor): base()
     {
-        this.favoredFace = Die.ValidFace  (value: favoredFace);
-        this.favorFactor = Die.ValidFactor(value: favorFactor);
+        this.FavoredFace = Die.ValidFace  (value: favoredFace);
+        this.FavorFactor = Die.ValidFactor(value: favorFactor);
     }
 
+    #region Methods
     public override string ToString() =>
-    $"favoredFace:{this.favoredFace},favorFactor:{this.favorFactor}";
+    $"favoredFace:{this.FavoredFace},favorFactor:{this.FavorFactor}";
 
     internal byte Roll()
     {
         byte upFace = (byte) (this.Random.Next(maxValue: Die.maxFaceValue) + 1);
 
-        return upFace == this.favoredFace ? (byte) (upFace * this.favorFactor) : upFace;
+        return upFace == this.FavoredFace ? (byte) (upFace * this.FavorFactor) : upFace;
     }
+    #endregion
 }
