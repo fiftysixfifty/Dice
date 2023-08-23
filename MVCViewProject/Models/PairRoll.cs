@@ -11,11 +11,15 @@ internal class PairRoll
     internal byte SecondFavoredFace => this.pair.SecondDie.FavoredFace;
     internal byte SecondFavorFactor => this.pair.SecondDie.FavorFactor;
 
-    internal byte Roll { get; }
+    internal byte FirstRoll  { get; }
+    internal byte SecondRoll { get; }
+
+    internal byte Roll => (byte) (this.FirstRoll + this.SecondRoll);
     #endregion
 
-    internal PairRoll(Pair pair, byte roll): base()
-    { this.pair = pair; this.Roll = roll; }
+    internal PairRoll(Pair pair, byte firstRoll, byte secondRoll) : base()
+    { this.pair = pair; this.FirstRoll = firstRoll; this.SecondRoll = secondRoll; }
 
-    public override string ToString() => $"{this.pair.ToString()},{this.Roll}";
+    public override string ToString() =>
+    $"{this.pair.ToString()},{this.FirstRoll},{this.SecondRoll}";
 }

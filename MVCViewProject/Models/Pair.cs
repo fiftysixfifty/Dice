@@ -14,7 +14,6 @@ internal class Pair
     public override string ToString() => $"{this.FirstDie},{this.SecondDie}";
 
     internal PairRoll Roll() => new PairRoll(
-        pair: this                                                 ,
-        roll: (byte) (this.FirstDie.Roll() + this.SecondDie.Roll()));
+        pair: this, firstRoll: this.FirstDie.Roll(), secondRoll: this.SecondDie.Roll());
     #endregion
 }

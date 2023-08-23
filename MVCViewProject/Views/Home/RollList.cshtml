@@ -13,17 +13,24 @@
 <table class="table">
     <thead>
         <tr>
-            <th colspan="2">First Die</th>
-            <th colspan="2">Second Die</th>
+            <th />
+            <th>First Die</th>
+            <th />
+
+            <th />
+            <th>Second Die</th>
+            <th />
 
             <th />
         </tr>
         <tr>
             <th>Favored Face</th>
             <th>Favor Factor</th>
+            <th>Roll</th>
 
             <th>Favored Face</th>
             <th>Favor Factor</th>
+            <th>Roll</th>
 
             <th>Pair Roll</th>
         </tr>
@@ -36,11 +43,15 @@
                     pairRoll.FirstFavoredFace))</td>
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
                     pairRoll.FirstFavorFactor))</td>
+                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                    pairRoll.FirstRoll))</td>
 
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
                     pairRoll.SecondFavoredFace))</td>
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
                     pairRoll.SecondFavorFactor))</td>
+                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                    pairRoll.SecondRoll))</td>
 
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
                     pairRoll.Roll))</td>
