@@ -1,4 +1,6 @@
-﻿namespace MVCViewProject;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace MVCViewProject;
 
 public class Program
 {
@@ -10,8 +12,22 @@ public class Program
                 WebApplication.CreateBuilder(args: args);
 
             // Add services to the container.
-            webApplicationBuilder.Services.AddControllersWithViews();
+            {
+                IServiceCollection serviceCollection = webApplicationBuilder.Services;
 
+                serviceCollection.AddControllersWithViews();
+
+                string? connectionString =
+                    webApplicationBuilder.Configuration.GetConnectionString(
+                        name: "SQLite");
+
+                MVCViewProject.Storage.DbContext.SetConnectionString(
+                    connectionString: connectionString);
+                serviceCollection.AddDbContext<MVCViewProject.Storage.DbContext>(
+                    optionsAction: (DbContextOptionsBuilder dbContextOptionsBuilder) =>
+                    dbContextOptionsBuilder.UseSqlite(
+                        connectionString: connectionString));
+            }
             webApplication = webApplicationBuilder.Build();
         }
 

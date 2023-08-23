@@ -1,25 +1,50 @@
-﻿namespace MVCViewProject.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations       ;
 
-internal class PairRoll
+namespace MVCViewProject.Models;
+
+[TableAttribute(name: nameof(PairRoll))]
+public class PairRoll
 {
-    private readonly Pair pair;
+    private Pair? pair = null;
 
     #region Properties
-    internal byte FirstFavoredFace => this.pair.FirstDie.FavoredFace;
-    internal byte FirstFavorFactor => this.pair.FirstDie.FavorFactor;
+    [KeyAttribute()]
+    public int Id { get; set; }
 
-    internal byte SecondFavoredFace => this.pair.SecondDie.FavoredFace;
-    internal byte SecondFavorFactor => this.pair.SecondDie.FavorFactor;
+    public byte FirstFavoredFace { get; set; }
+    public byte FirstFavorFactor { get; set; }
 
-    internal byte FirstRoll  { get; }
-    internal byte SecondRoll { get; }
+    public byte SecondFavoredFace { get; set; }
+    public byte SecondFavorFactor { get; set; }
 
-    internal byte Roll => (byte) (this.FirstRoll + this.SecondRoll);
+    public byte FirstRoll  { get; set; }
+    public byte SecondRoll { get; set; }
+
+    public byte Roll { get; set; }
     #endregion
 
-    internal PairRoll(Pair pair, byte firstRoll, byte secondRoll) : base()
-    { this.pair = pair; this.FirstRoll = firstRoll; this.SecondRoll = secondRoll; }
+    #region Constructors
+    public PairRoll(): base() {}
+
+    internal PairRoll(Pair pair, byte firstRoll, byte secondRoll) : this()
+    {
+        this.pair = pair;
+
+        this.FirstFavoredFace = this.pair.FirstDie.FavoredFace;
+        this.FirstFavorFactor = this.pair.FirstDie.FavorFactor;
+
+        this.SecondFavoredFace = this.pair.SecondDie.FavoredFace;
+        this.SecondFavorFactor = this.pair.SecondDie.FavorFactor;
+
+
+        this.FirstRoll  = firstRoll;
+        this.SecondRoll = secondRoll;
+
+        this.Roll = (byte) (this.FirstRoll + this.SecondRoll);
+    }
+    #endregion
 
     public override string ToString() =>
-    $"{this.pair.ToString()},{this.FirstRoll},{this.SecondRoll}";
+    $"{this.pair?.ToString() ?? "<null>"},{this.FirstRoll},{this.SecondRoll}";
 }

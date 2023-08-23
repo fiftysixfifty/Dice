@@ -22,7 +22,8 @@ public class HomeController: Controller
     {
         PairRollList pairRollList = new Roller(indexViewModel: indexViewModel).Roll();
 
-        return this.View(model: pairRollList);
+        return this.View(model: MVCViewProject.Services.PairRoll.Add(
+            pairRollList: pairRollList));
     }
 
     [ResponseCacheAttribute(
