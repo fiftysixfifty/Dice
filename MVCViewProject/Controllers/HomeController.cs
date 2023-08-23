@@ -18,7 +18,7 @@ public class HomeController: Controller
 
     [HttpPostAttribute                ()]
     [ValidateAntiForgeryTokenAttribute()]
-    public IActionResult RollList(MVCViewProject.ViewModels.Index indexViewModel)
+    public IActionResult PairRollList(MVCViewProject.ViewModels.Index indexViewModel)
     {
         PairRollList pairRollList = new Roller(indexViewModel: indexViewModel).Roll();
 
