@@ -27,7 +27,7 @@ public class PairRoll
     #region Constructors
     public PairRoll(): base() {}
 
-    internal PairRoll(Pair pair, byte firstRoll, byte secondRoll) : this()
+    internal PairRoll(Pair pair, byte firstRoll, byte secondRoll): this()
     {
         this.pair = pair;
 
