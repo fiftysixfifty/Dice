@@ -20,19 +20,15 @@
             <th />
             <th>Second Die</th>
             <th />
-
-            <th />
         </tr>
         <tr>
             <th>Favored Face</th>
             <th>Favor Factor</th>
-            <th>Roll</th>
+            <th>Up Face</th>
 
             <th>Favored Face</th>
             <th>Favor Factor</th>
-            <th>Roll</th>
-
-            <th>Pair Roll</th>
+            <th>Up Face</th>
         </tr>
     </thead>
     <tbody>
@@ -44,17 +40,14 @@
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
                     pairRoll.FirstFavorFactor))</td>
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
-                    pairRoll.FirstRoll))</td>
+                    pairRoll.FirstUpFace))</td>
 
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
                     pairRoll.SecondFavoredFace))</td>
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
                     pairRoll.SecondFavorFactor))</td>
                 <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
-                    pairRoll.SecondRoll))</td>
-
-                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
-                    pairRoll.Roll))</td>
+                    pairRoll.SecondUpFace))</td>
             </tr>
         }
     </tbody>
