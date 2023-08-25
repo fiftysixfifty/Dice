@@ -4,13 +4,9 @@ internal class Die
 {
     private const byte maxFaceValue = 6;
 
-    private Random? random = null;
-
     #region Properties
     internal byte FavoredFace { get; }
     internal byte FavorFactor { get; }
-
-    private Random Random => this.random ??= new Random();
     #endregion
 
     #region Private Methods
@@ -38,6 +34,7 @@ internal class Die
     public override string ToString() =>
     $"favoredFace:{this.FavoredFace},favorFactor:{this.FavorFactor}";
 
-    internal byte Roll() => (byte) (this.Random.Next(maxValue: Die.maxFaceValue) + 1);
+    internal byte Roll(Random random) =>
+    (byte) (random.Next(maxValue: Die.maxFaceValue) + 1);
     #endregion
 }
