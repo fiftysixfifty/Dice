@@ -35,7 +35,22 @@ internal class Die
     public override string ToString() =>
     $"favoredFace:{this.FavoredFace},favorFactor:{this.FavorFactor}";
 
-    internal byte Roll(Random random) =>
-    (byte) (random.Next(maxValue: Die.maxFace) + 1);
+    internal byte Roll(Random random)
+    {
+        byte upFaceArrayCount;
+        {
+            byte extraFaceCount = (byte) (this.FavorFactor - 1);
+
+            upFaceArrayCount = (byte) (Die.maxFace + extraFaceCount);
+        }
+        byte[] upFaceArray = new byte[upFaceArrayCount];
+
+        for (byte i = 0; i < Die.maxFace; i++) upFaceArray[i] = (byte) (i + 1);
+
+        for (byte i = Die.maxFace; i < upFaceArrayCount; i++)
+            upFaceArray[i] = this.FavoredFace;
+
+        return upFaceArray[random.Next(maxValue: upFaceArrayCount)];
+    }
     #endregion
 }
