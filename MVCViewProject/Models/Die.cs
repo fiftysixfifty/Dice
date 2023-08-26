@@ -2,7 +2,7 @@
 
 internal class Die
 {
-    private const byte maxFaceValue = 6;
+    private const byte maxFace = 6;
 
     #region Properties
     internal byte FavoredFace { get; }
@@ -18,16 +18,17 @@ internal class Die
             return value;
     }
 
-    private static byte ValidFace(byte value) =>
-    Die.Valid(maxValue: Die.maxFaceValue, value: value);
+    private static byte ValidFace(byte face) =>
+    Die.Valid(maxValue: Die.maxFace, value: face);
 
-    private static byte ValidFactor(byte value) => Die.Valid(maxValue: 5, value: value);
+    private static byte ValidFactor(byte factor) =>
+    Die.Valid(maxValue: 5, value: factor);
     #endregion
 
     internal Die(byte favoredFace, byte favorFactor): base()
     {
-        this.FavoredFace = Die.ValidFace  (value: favoredFace);
-        this.FavorFactor = Die.ValidFactor(value: favorFactor);
+        this.FavoredFace = Die.ValidFace  (face  : favoredFace);
+        this.FavorFactor = Die.ValidFactor(factor: favorFactor);
     }
 
     #region Methods
@@ -35,6 +36,6 @@ internal class Die
     $"favoredFace:{this.FavoredFace},favorFactor:{this.FavorFactor}";
 
     internal byte Roll(Random random) =>
-    (byte) (random.Next(maxValue: Die.maxFaceValue) + 1);
+    (byte) (random.Next(maxValue: Die.maxFace) + 1);
     #endregion
 }
