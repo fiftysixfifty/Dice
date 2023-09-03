@@ -1,6 +1,4 @@
-﻿@using MVCViewProject.Models;
-
-@model PairRollList
+﻿@model MVCViewProject.Models.PairRollList
 
 @{
     this.ViewData[index: "Title"] = "Pair Roll List";
@@ -32,21 +30,27 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (PairRoll pairRoll in this.Model)
+        @foreach (MVCViewProject.Models.PairRoll pairRoll in this.Model)
         {
             <tr>
-                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                <td>@(this.Html.DisplayFor(expression:
+                    (MVCViewProject.Models.PairRollList pairRollList) =>
                     pairRoll.FirstFavoredFace))</td>
-                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                <td>@(this.Html.DisplayFor(expression:
+                    (MVCViewProject.Models.PairRollList pairRollList) =>
                     pairRoll.FirstFavorFactor))</td>
-                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                <td>@(this.Html.DisplayFor(expression:
+                    (MVCViewProject.Models.PairRollList pairRollList) =>
                     pairRoll.FirstUpFace))</td>
 
-                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                <td>@(this.Html.DisplayFor(expression:
+                    (MVCViewProject.Models.PairRollList pairRollList) =>
                     pairRoll.SecondFavoredFace))</td>
-                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                <td>@(this.Html.DisplayFor(expression:
+                    (MVCViewProject.Models.PairRollList pairRollList) =>
                     pairRoll.SecondFavorFactor))</td>
-                <td>@(this.Html.DisplayFor(expression: (PairRollList pairRollList) =>
+                <td>@(this.Html.DisplayFor(expression:
+                    (MVCViewProject.Models.PairRollList pairRollList) =>
                     pairRoll.SecondUpFace))</td>
             </tr>
         }

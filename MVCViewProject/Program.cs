@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// For UseSqlite():
+using static Microsoft.EntityFrameworkCore.SqliteDbContextOptionsBuilderExtensions;
 
 namespace MVCViewProject;
 
@@ -6,14 +7,15 @@ public class Program
 {
     internal static void Main(string[] args)
     {
-        WebApplication webApplication;
+        Microsoft.AspNetCore.Builder.WebApplication webApplication;
         {
-            WebApplicationBuilder webApplicationBuilder =
-                WebApplication.CreateBuilder(args: args);
+            Microsoft.AspNetCore.Builder.WebApplicationBuilder webApplicationBuilder =
+                Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args: args);
 
             // Add services to the container.
             {
-                IServiceCollection serviceCollection = webApplicationBuilder.Services;
+                Microsoft.Extensions.DependencyInjection.IServiceCollection
+                    serviceCollection = webApplicationBuilder.Services;
 
                 serviceCollection.AddControllersWithViews();
 
@@ -24,9 +26,11 @@ public class Program
                 MVCViewProject.Storage.DbContext.SetConnectionString(
                     connectionString: connectionString);
                 serviceCollection.AddDbContext<MVCViewProject.Storage.DbContext>(
-                    optionsAction: (DbContextOptionsBuilder dbContextOptionsBuilder) =>
-                    dbContextOptionsBuilder.UseSqlite(
-                        connectionString: connectionString));
+                    optionsAction:
+                        (Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
+                            dbContextOptionsBuilder) =>
+                        dbContextOptionsBuilder.UseSqlite(
+                            connectionString: connectionString));
             }
             webApplication = webApplicationBuilder.Build();
         }

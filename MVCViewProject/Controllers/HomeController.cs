@@ -1,34 +1,39 @@
-﻿using Microsoft.AspNetCore.Mvc ;
-using MVCViewProject.Models    ;
-using System.Diagnostics       ;
-using MVCViewProject.ViewModels;
+﻿namespace MVCViewProject.Controllers;
 
-namespace MVCViewProject.Controllers;
-
-public class HomeController: Controller
+public class HomeController: Microsoft.AspNetCore.Mvc.Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly Microsoft.Extensions.Logging.ILogger<
+        MVCViewProject.Controllers.HomeController> logger;
 
-    public HomeController(ILogger<HomeController> logger): base() =>
-    this._logger = logger;
+    public HomeController(Microsoft.Extensions.Logging.ILogger<
+        MVCViewProject.Controllers.HomeController> logger): base() =>
+    this.logger = logger;
 
     #region Methods
-    public IActionResult Index  () => this.View();
-    public IActionResult Privacy() => this.View();
+    public Microsoft.AspNetCore.Mvc.IActionResult Index  () => this.View();
+    public Microsoft.AspNetCore.Mvc.IActionResult Privacy() => this.View();
 
-    [HttpPostAttribute                ()]
-    [ValidateAntiForgeryTokenAttribute()]
-    public IActionResult PairRollList(MVCViewProject.ViewModels.Index indexViewModel)
+    [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
+    [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
+    public Microsoft.AspNetCore.Mvc.IActionResult PairRollList(
+    MVCViewProject.ViewModels.Index indexViewModel)
     {
-        PairRollList pairRollList = new Roller(indexViewModel: indexViewModel).Roll();
+        MVCViewProject.Models.PairRollList pairRollList =
+            new MVCViewProject.Models.Roller(indexViewModel: indexViewModel).Roll();
 
         return this.View(model: MVCViewProject.Services.PairRoll.Add(
             pairRollList: pairRollList));
     }
 
-    [ResponseCacheAttribute(
-        Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error() => this.View(model: new Error()
-        { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
+    [Microsoft.AspNetCore.Mvc.ResponseCacheAttribute(
+        Duration = 0                                                  ,
+        Location = Microsoft.AspNetCore.Mvc.ResponseCacheLocation.None,
+        NoStore  = true                                               )]
+    public Microsoft.AspNetCore.Mvc.IActionResult Error() => this.View(model:
+        new MVCViewProject.ViewModels.Error()
+        {
+            RequestId = System.Diagnostics.Activity.Current?.Id
+                ?? this.HttpContext.TraceIdentifier
+        });
     #endregion
 }
