@@ -2,16 +2,19 @@
 
 internal class DieTest
 {
+    private System.Random? random;
+
+    private protected System.Random Random => this.random ??= new System.Random();
+
     [NUnit.Framework.TestAttribute()]
     public void RollIsWithinRange()
     {
-        System.Random        random = new System.Random()       ;
-        ModelLibrary.Die.Die die    = new ModelLibrary.Die.Die();
-        byte                 roll                               ;
+        ModelLibrary.Die.Die die  = new ModelLibrary.Die.Die(random: this.Random);
+        byte                 roll                                                ;
 
         for (byte i = 0; i < 100; i++)
         {
-            roll = die.Roll(random: random);
+            roll = die.Roll();
 
             const byte minValue = 1, maxValue = 6;
 
