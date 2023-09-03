@@ -15,8 +15,8 @@ internal class FavoredDieTest
 
     [NUnit.Framework.TestAttribute()]
     public void GoodFavoredFaceConstructorSucceeds() =>
-    NUnit.Framework.Assert.DoesNotThrow(code:
-        () => new ModelLibrary.Die.FavoredDie(favoredFace: 4, favorFactor: 3));
+    NUnit.Framework.Assert.DoesNotThrow(code: () =>
+        new ModelLibrary.Die.FavoredDie(favoredFace: 4, favorFactor: 3));
 
 
     [NUnit.Framework.TestAttribute()]
@@ -31,8 +31,8 @@ internal class FavoredDieTest
 
     [NUnit.Framework.TestAttribute()]
     public void GoodFavorFactorConstructorSucceeds() =>
-    NUnit.Framework.Assert.DoesNotThrow(code:
-        () => new ModelLibrary.Die.FavoredDie(favoredFace: 4, favorFactor: 3));
+    NUnit.Framework.Assert.DoesNotThrow(code: () =>
+        new ModelLibrary.Die.FavoredDie(favoredFace: 4, favorFactor: 3));
     #endregion
 
     [NUnit.Framework.TestAttribute()]

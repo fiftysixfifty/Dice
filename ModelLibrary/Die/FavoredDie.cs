@@ -4,21 +4,8 @@ public class FavoredDie: ModelLibrary.Die.Die
 {
     private readonly byte favoredFace, favorFactor;
 
-    #region Private Methods
-    private static byte Valid(byte maxValue, byte value)
-    {
-        if (value < 1 || value > maxValue)
-            throw new System.ArgumentOutOfRangeException();
-        else
-            return value;
-    }
-
-    private static byte ValidFace(byte face) => ModelLibrary.Die.FavoredDie.Valid(
-        maxValue: ModelLibrary.Die.FavoredDie.maxFace, value: face);
-
     private static byte ValidFactor(byte factor) =>
     ModelLibrary.Die.FavoredDie.Valid(maxValue: 5, value: factor);
-    #endregion
 
     public FavoredDie(byte favoredFace, byte favorFactor): base()
     {
