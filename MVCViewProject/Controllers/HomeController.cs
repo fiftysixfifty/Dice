@@ -25,6 +25,12 @@ public class HomeController: Microsoft.AspNetCore.Mvc.Controller
             pairRollList: pairRollList));
     }
 
+    [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
+    [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
+    public Microsoft.AspNetCore.Mvc.IActionResult ResultList(
+    ModelLibrary.Specification.Specification specification) => this.View(model:
+        new ModelLibrary.Agent.Agent(specification: specification).Execute());
+
     [Microsoft.AspNetCore.Mvc.ResponseCacheAttribute(
         Duration = 0                                                  ,
         Location = Microsoft.AspNetCore.Mvc.ResponseCacheLocation.None,
