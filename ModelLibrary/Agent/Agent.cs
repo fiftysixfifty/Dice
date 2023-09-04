@@ -3,16 +3,16 @@
 public class Agent
 {
     #region Fields
-    private readonly ModelLibrary.Specification.Specification specification;
+    private protected readonly ModelLibrary.Specification.Specification specification;
 
     private System.Random?        random = null;
     private ModelLibrary.Die.Die? die    = null;
     #endregion
 
     #region Properties
-    private System.Random Random => this.random ??= new System.Random();
+    private protected System.Random Random => this.random ??= new System.Random();
 
-    private ModelLibrary.Die.Die Die =>
+    private protected ModelLibrary.Die.Die Die =>
         this.die ??= new ModelLibrary.Die.Die(random: this.Random);
     #endregion
 

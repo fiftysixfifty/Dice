@@ -1,0 +1,35 @@
+﻿@model ModelLibrary.Result.ResultPairList
+
+@{
+    this.ViewData[index: "Title"] = "Result Pair List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@(this.ViewData[index: "Title"])</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Face</th>
+            <th>Second Face</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ModelLibrary.Result.ResultPair resultPair in this.Model)
+        {
+            <tr>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.ResultPairList resultPairList) =>
+                        resultPair.Face))
+                </td>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.ResultPairList resultPairList) =>
+                        resultPair.SecondFace))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

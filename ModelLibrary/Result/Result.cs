@@ -2,14 +2,13 @@
 
 public class Result
 {
-    #region Properties
-    public ModelLibrary.Die.Die Die  { get; }
-    public byte                 Face { get; }
-    #endregion
+    private readonly ModelLibrary.Die.Die die;
+
+    public byte Face { get; }
 
     public Result(ModelLibrary.Die.Die die): base()
     {
-        this.Die  = die                                                  ;
-        this.Face = ModelLibrary.Die.Die.ValidFace(face: this.Die.Roll());
+        this.die  = die                                                  ;
+        this.Face = ModelLibrary.Die.Die.ValidFace(face: this.die.Roll());
     }
 }

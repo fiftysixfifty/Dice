@@ -14,10 +14,6 @@ public class FavoredDie: ModelLibrary.Die.Die
         this.favorFactor = ModelLibrary.Die.FavoredDie.ValidFactor(factor: favorFactor);
     }
 
-    #region Methods
-    public override string ToString() =>
-    $"favoredFace:{this.favoredFace},favorFactor:{this.favorFactor}";
-
     public override byte Roll()
     {
         byte resultFaceArrayCount;
@@ -37,5 +33,4 @@ public class FavoredDie: ModelLibrary.Die.Die
 
         return resultFaceArray[random.Next(maxValue: resultFaceArrayCount)];
     }
-    #endregion
 }
