@@ -2,6 +2,10 @@
 
 internal class FavoredDieTest: ModelTestLibrary.Die.DieTest
 {
+    private protected override ModelLibrary.Die.Die MakeDie() =>
+    new ModelLibrary.Die.FavoredDie(
+        random: this.Random, favoredFace: 4, favorFactor: 3);
+
     #region Constructor Tests
     [NUnit.Framework.TestAttribute()]
     public void LowFavoredFaceConstructorFails() => NUnit.Framework.Assert.Throws<
@@ -36,20 +40,5 @@ internal class FavoredDieTest: ModelTestLibrary.Die.DieTest
     #endregion
 
     [NUnit.Framework.TestAttribute()]
-    public void RollIsWithinRange()
-    {
-        ModelLibrary.Die.FavoredDie favoredDie = new ModelLibrary.Die.FavoredDie(
-            random: this.Random, favoredFace: 4, favorFactor: 3);
-        byte roll;
-
-        for (byte i = 0; i < 100; i++)
-        {
-            roll = favoredDie.Roll();
-
-            const byte minValue = 1, maxValue = 6;
-
-            NUnit.Framework.Assert.GreaterOrEqual(arg1: roll, arg2: minValue);
-            NUnit.Framework.Assert.LessOrEqual   (arg1: roll, arg2: maxValue);
-        }
-    }
+    public new void RollIsWithinRange() => this.VirtualRollIsWithinRange();
 }
