@@ -5,7 +5,7 @@ public class FavoredDie: ModelLibrary.Die.Die
     private readonly byte favoredFace, favorFactor;
 
     private static byte ValidFactor(byte factor) =>
-    ModelLibrary.Die.FavoredDie.Valid(maxValue: 5, value: factor);
+    ModelLibrary.Util.Util.Valid(maxValue: 5, value: factor);
 
     public FavoredDie(System.Random random, byte favoredFace, byte favorFactor):
     base(random: random)
