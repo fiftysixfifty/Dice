@@ -16,18 +16,6 @@ public class HomeController: Microsoft.AspNetCore.Mvc.Controller
 
     [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
     [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
-    public Microsoft.AspNetCore.Mvc.IActionResult PairRollList(
-    MVCViewProject.ViewModels.Index indexViewModel)
-    {
-        MVCViewProject.Models.PairRollList pairRollList =
-            new MVCViewProject.Models.Roller(indexViewModel: indexViewModel).Roll();
-
-        return this.View(model: MVCViewProject.Services.PairRoll.Add(
-            pairRollList: pairRollList));
-    }
-
-    [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
-    [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
     public Microsoft.AspNetCore.Mvc.IActionResult ResultList(
     ModelLibrary.Specification.Specification specification) => this.View(model:
         new ModelLibrary.Agent.Agent(specification: specification).Execute());

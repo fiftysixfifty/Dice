@@ -1,7 +1,4 @@
-﻿// For UseSqlite():
-using static Microsoft.EntityFrameworkCore.SqliteDbContextOptionsBuilderExtensions;
-
-namespace MVCViewProject;
+﻿namespace MVCViewProject;
 
 public class Program
 {
@@ -18,19 +15,6 @@ public class Program
                     serviceCollection = webApplicationBuilder.Services;
 
                 serviceCollection.AddControllersWithViews();
-
-                string? connectionString =
-                    webApplicationBuilder.Configuration.GetConnectionString(
-                        name: "SQLite");
-
-                MVCViewProject.Storage.DbContext.SetConnectionString(
-                    connectionString: connectionString);
-                serviceCollection.AddDbContext<MVCViewProject.Storage.DbContext>(
-                    optionsAction:
-                        (Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
-                            dbContextOptionsBuilder) =>
-                        dbContextOptionsBuilder.UseSqlite(
-                            connectionString: connectionString));
             }
             webApplication = webApplicationBuilder.Build();
         }
