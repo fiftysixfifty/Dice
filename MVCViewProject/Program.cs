@@ -1,4 +1,41 @@
-﻿namespace MVCViewProject;
+﻿// For AddControllersWithViews():
+using static Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions;
+
+// GetConnectionString():
+//using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
+
+// For UseSqlite():
+//using static Microsoft.EntityFrameworkCore.SqliteDbContextOptionsBuilderExtensions;
+
+// AddDbContext<>():
+//using static
+//    Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions;
+
+// IsDevelopment():
+using static Microsoft.Extensions.Hosting.HostEnvironmentEnvExtensions;
+
+// UseExceptionHandler():
+using static Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions;
+
+// UseHsts():
+using static Microsoft.AspNetCore.Builder.HstsBuilderExtensions;
+
+// UseHttpsRedirection():
+using static Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions;
+
+// UseStaticFiles():
+using static Microsoft.AspNetCore.Builder.StaticFileExtensions;
+
+// UseRouting():
+using static Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions;
+
+// UseAuthorization():
+using static Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions;
+
+// MapControllerRoute():
+using static Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions;
+
+namespace MVCViewProject;
 
 public class Program
 {
@@ -15,6 +52,19 @@ public class Program
                     serviceCollection = webApplicationBuilder.Services;
 
                 serviceCollection.AddControllersWithViews();
+
+                /*string? connectionString =
+                    webApplicationBuilder.Configuration.GetConnectionString(
+                        name: "SQLite");
+
+                MVCViewProject.Storage.DbContext.SetConnectionString(
+                    connectionString: connectionString);
+                serviceCollection.AddDbContext<MVCViewProject.Storage.DbContext>(
+                    optionsAction:
+                        (Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
+                            dbContextOptionsBuilder) =>
+                        dbContextOptionsBuilder.UseSqlite(
+                            connectionString: connectionString));*/
             }
             webApplication = webApplicationBuilder.Build();
         }
