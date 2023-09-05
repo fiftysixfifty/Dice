@@ -2,7 +2,7 @@
 
 public class Result
 {
-    private readonly ModelLibrary.Die.Die die;
+    private protected readonly ModelLibrary.Die.Die die;
 
     public byte Face { get; }
 

@@ -37,6 +37,13 @@ public class HomeController: Microsoft.AspNetCore.Mvc.Controller
     ModelLibrary.Specification.Specification specification) => this.View(model:
         new ModelLibrary.Agent.PairAgent(specification: specification).Execute());
 
+    [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
+    [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
+    public Microsoft.AspNetCore.Mvc.IActionResult FavoredResultList(
+    ModelLibrary.Specification.FavoredSpecification favoredSpecification) => this.View(
+        model: new ModelLibrary.Agent.FavoredAgent(
+            specification: favoredSpecification).Execute());
+
     [Microsoft.AspNetCore.Mvc.ResponseCacheAttribute(
         Duration = 0                                                  ,
         Location = Microsoft.AspNetCore.Mvc.ResponseCacheLocation.None,

@@ -1,0 +1,46 @@
+﻿@model ModelLibrary.Result.FavoredResultList
+
+@{
+    this.ViewData[index: "Title"] = "Favored Result List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@(this.ViewData[index: "Title"])</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th />
+            <th>Die</th>
+            <th />
+        </tr>
+        <tr>
+            <th>Favored Face</th>
+            <th>Favor Factor</th>
+            <th>Face</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ModelLibrary.Result.FavoredResult result in this.Model)
+        {
+            <tr>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultList favoredResultList) =>
+                        result.FavoredFace))
+                </td>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultList favoredResultList) =>
+                        result.FavorFactor))
+                </td>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultList favoredResultList) =>
+                        result.Face))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

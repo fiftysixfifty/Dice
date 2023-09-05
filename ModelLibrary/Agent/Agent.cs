@@ -12,9 +12,11 @@ public class Agent
     #region Properties
     private protected System.Random Random => this.random ??= new System.Random();
 
-    private protected ModelLibrary.Die.Die Die =>
-        this.die ??= new ModelLibrary.Die.Die(random: this.Random);
+    private protected ModelLibrary.Die.Die Die => this.die ??= this.MakeDie();
     #endregion
+
+    private protected virtual ModelLibrary.Die.Die MakeDie() =>
+    new ModelLibrary.Die.Die(random: this.Random);
 
     public Agent(ModelLibrary.Specification.Specification specification): base() =>
     this.specification = specification;

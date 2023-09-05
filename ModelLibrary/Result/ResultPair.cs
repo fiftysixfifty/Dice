@@ -2,7 +2,7 @@
 
 public class ResultPair: ModelLibrary.Result.Result
 {
-    private readonly ModelLibrary.Die.Die secondDie;
+    private protected readonly ModelLibrary.Die.Die secondDie;
 
     public byte SecondFace { get; }
 

@@ -2,7 +2,7 @@
 
 public class Die
 {
-    private protected const byte maxFace = 6;
+    public const byte MaxFace = 6;
 
     private protected readonly System.Random random;
 
@@ -10,9 +10,9 @@ public class Die
 
     #region Methods
     internal static byte ValidFace(byte face) => ModelLibrary.Util.Util.Valid(
-        maxValue: ModelLibrary.Die.Die.maxFace, value: face);
+        maxValue: ModelLibrary.Die.Die.MaxFace, value: face);
 
     public virtual byte Roll() =>
-    (byte) (this.random.Next(maxValue: ModelLibrary.Die.Die.maxFace) + 1);
+    (byte) (this.random.Next(maxValue: ModelLibrary.Die.Die.MaxFace) + 1);
     #endregion
 }
