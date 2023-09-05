@@ -1,0 +1,76 @@
+﻿@model ModelLibrary.Result.FavoredResultPairList
+
+@{
+    this.ViewData[index: "Title"] = "Favored Result Pair List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@(this.ViewData[index: "Title"])</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th />
+            <th>First Die</th>
+            <th />
+
+            <th />
+            <th>Second Die</th>
+            <th />
+        </tr>
+        <tr>
+            <th>Favored Face</th>
+            <th>Favor Factor</th>
+            <th>Face</th>
+
+            <th>Favored Face</th>
+            <th>Favor Factor</th>
+            <th>Face</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ModelLibrary.Result.FavoredResultPair result in this.Model)
+        {
+            <tr>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultPairList
+                            favoredResultPairList) =>
+                        result.FavoredFace))
+                </td>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultPairList
+                            favoredResultPairList) =>
+                        result.FavorFactor))
+                </td>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultPairList
+                            favoredResultPairList) =>
+                        result.Face))
+                </td>
+
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultPairList
+                            favoredResultPairList) =>
+                        result.SecondFavoredFace))
+                </td>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultPairList
+                            favoredResultPairList) =>
+                        result.SecondFavorFactor))
+                </td>
+                <td>
+                    @(this.Html.DisplayFor(expression:
+                        (ModelLibrary.Result.FavoredResultPairList
+                            favoredResultPairList) =>
+                        result.SecondFace))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

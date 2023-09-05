@@ -10,9 +10,6 @@ public class FavoredResult: ModelLibrary.Result.Result
     public byte FavorFactor => this.FavoredDie.FavorFactor;
     #endregion
 
-    public FavoredResult(ModelLibrary.Die.Die die): base(die: die)
-    {
-        if (die is not ModelLibrary.Die.FavoredDie)
-            throw new System.ArgumentException();
-    }
+    public FavoredResult(ModelLibrary.Die.FavoredDie favoredDie):
+    base(die: favoredDie) {}
 }

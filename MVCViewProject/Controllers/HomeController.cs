@@ -13,6 +13,7 @@ public class HomeController: Microsoft.AspNetCore.Mvc.Controller
     public Microsoft.AspNetCore.Mvc.IActionResult Index  () => this.View();
     public Microsoft.AspNetCore.Mvc.IActionResult Privacy() => this.View();
 
+
     [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
     [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
     public Microsoft.AspNetCore.Mvc.IActionResult PairRollList(
@@ -42,7 +43,15 @@ public class HomeController: Microsoft.AspNetCore.Mvc.Controller
     public Microsoft.AspNetCore.Mvc.IActionResult FavoredResultList(
     ModelLibrary.Specification.FavoredSpecification favoredSpecification) => this.View(
         model: new ModelLibrary.Agent.FavoredAgent(
-            specification: favoredSpecification).Execute());
+            favoredSpecification: favoredSpecification).Execute());
+
+    [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
+    [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
+    public Microsoft.AspNetCore.Mvc.IActionResult FavoredResultPairList(
+    ModelLibrary.Specification.FavoredPairSpecification favoredPairSpecification) =>
+    this.View(model: new ModelLibrary.Agent.FavoredPairAgent(
+        favoredPairSpecification: favoredPairSpecification).Execute());
+
 
     [Microsoft.AspNetCore.Mvc.ResponseCacheAttribute(
         Duration = 0                                                  ,

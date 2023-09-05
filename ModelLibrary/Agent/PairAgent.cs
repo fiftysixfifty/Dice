@@ -4,8 +4,7 @@ public class PairAgent: ModelLibrary.Agent.Agent
 {
     private ModelLibrary.Die.Die? secondDie = null;
 
-    private ModelLibrary.Die.Die SecondDie =>
-        this.secondDie ??= new ModelLibrary.Die.Die(random: this.Random);
+    private ModelLibrary.Die.Die SecondDie => this.secondDie ??= this.MakeDie();
 
     public PairAgent(ModelLibrary.Specification.Specification specification):
     base(specification: specification) {}

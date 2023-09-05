@@ -1,4 +1,4 @@
-﻿@model ModelLibrary.Specification.FavoredSpecification
+﻿@model ModelLibrary.Specification.FavoredPairSpecification
 
 @{
     this.ViewData[index: "Title"] = "Home Page";
@@ -10,15 +10,16 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="@("FavoredResultList")">
+        <form asp-action="@("FavoredResultPairList")">
             <div class="text-danger" asp-validation-summary="@(
                 Microsoft.AspNetCore.Mvc.Rendering.ValidationSummary.ModelOnly)" />
 
             <table cellpadding="10">
                 <thead>
                     <tr>
-                        <th />
-                        <th>Die</th>
+                        <th width="40%" />
+                        <th width="30%">First Die</th>
+                        <th width="30%">Second Die</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,13 @@
                             <span asp-validation-for="@(this.Model.FavoredFace)"
                                 class="text-danger" />
                         </td>
+                        <td>
+                            <input asp-for="@(this.Model.SecondFavoredFace)"
+                                class="form-control" value="@(1)" min="1"
+                                max="@(ModelLibrary.Die.Die.MaxFace)" />
+                            <span asp-validation-for="@(this.Model.SecondFavoredFace)"
+                                class="text-danger" />
+                        </td>
                     </tr>
                     <tr>
                         <td>Favor factor:</td>
@@ -41,10 +49,17 @@
                             <span asp-validation-for="@(this.Model.FavorFactor)"
                                 class="text-danger" />
                         </td>
+                        <td>
+                            <input asp-for="@(this.Model.SecondFavorFactor)"
+                                class="form-control" value="@(1)" min="1"
+                                max="@(ModelLibrary.Die.FavoredDie.MaxFactor)" />
+                            <span asp-validation-for="@(this.Model.SecondFavorFactor)"
+                                class="text-danger" />
+                        </td>
                     </tr>
                     <tr>
                         <td style="white-space: nowrap;">Number of times to roll:</td>
-                        <td>
+                        <td colspan="2">
                             <input asp-for="@(this.Model.NumberOfTimesToRoll)"
                                 class="form-control" value="@(1)" min="1"
                                 max="@(byte.MaxValue)" />
@@ -53,7 +68,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td colspan="3" align="center">
                             <input type="submit" value="Roll" class="btn btn-primary" />
                         </td>
                     </tr>
