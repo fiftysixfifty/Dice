@@ -1,10 +1,12 @@
-﻿namespace ServiceLibrary;
+﻿namespace ServiceLibrary.Result;
 
-public class FavoredResultPair
+public static class FavoredResultPair
 {
-    public ModelLibrary.Result.FavoredResultPairList Add(
-    ModelLibrary.Result.FavoredResultPairList result)
+    public static ModelLibrary.Result.FavoredResultPairList Add(
+    ModelLibrary.Result.FavoredResultPairList favoredResultPairList)
     {
-        return result;
+        //if (favoredResultPairList.Count > 0)
+
+        return favoredResultPairList;
     }
 }

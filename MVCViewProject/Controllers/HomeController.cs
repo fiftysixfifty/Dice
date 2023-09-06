@@ -30,15 +30,16 @@ public class HomeController: Microsoft.AspNetCore.Mvc.Controller
     [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
     public Microsoft.AspNetCore.Mvc.IActionResult FavoredResultList(
     ModelLibrary.Specification.FavoredSpecification favoredSpecification) => this.View(
-        model: new ModelLibrary.Agent.FavoredAgent(
-            favoredSpecification: favoredSpecification).Execute());
+        model: new ModelLibrary.Agent.FavoredAgent(favoredSpecification:
+            favoredSpecification).Execute());
 
     [Microsoft.AspNetCore.Mvc.HttpPostAttribute                ()]
     [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute()]
     public Microsoft.AspNetCore.Mvc.IActionResult FavoredResultPairList(
     ModelLibrary.Specification.FavoredPairSpecification favoredPairSpecification) =>
-    this.View(model: new ModelLibrary.Agent.FavoredPairAgent(
-        favoredPairSpecification: favoredPairSpecification).Execute());
+    this.View(model: ServiceLibrary.Result.FavoredResultPair.Add(favoredResultPairList:
+        new ModelLibrary.Agent.FavoredPairAgent(favoredPairSpecification:
+            favoredPairSpecification).Execute()));
 
 
     [Microsoft.AspNetCore.Mvc.ResponseCacheAttribute(
