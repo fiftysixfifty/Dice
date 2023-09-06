@@ -7,6 +7,9 @@ public class DbContext: Microsoft.EntityFrameworkCore.DbContext
 {
     private static string? connectionString = null;
 
+    public Microsoft.EntityFrameworkCore.DbSet<ModelLibrary.Die.FavoredDie>
+        FavoredDieDbSet { get; private set; }
+
     #region Constructors
     public DbContext(): base() {}
 
