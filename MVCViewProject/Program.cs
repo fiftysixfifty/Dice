@@ -1,15 +1,16 @@
-﻿// For AddControllersWithViews():
+﻿#region Usings
+// For AddControllersWithViews():
 using static Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions;
 
 // GetConnectionString():
-//using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
+using static Microsoft.Extensions.Configuration.ConfigurationExtensions;
 
 // For UseSqlite():
-//using static Microsoft.EntityFrameworkCore.SqliteDbContextOptionsBuilderExtensions;
+using static Microsoft.EntityFrameworkCore.SqliteDbContextOptionsBuilderExtensions;
 
 // AddDbContext<>():
-//using static
-//    Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions;
+using static
+    Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions;
 
 // IsDevelopment():
 using static Microsoft.Extensions.Hosting.HostEnvironmentEnvExtensions;
@@ -34,6 +35,7 @@ using static Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions;
 
 // MapControllerRoute():
 using static Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions;
+#endregion
 
 namespace MVCViewProject;
 
@@ -53,18 +55,17 @@ public class Program
 
                 serviceCollection.AddControllersWithViews();
 
-                /*string? connectionString =
+                string? connectionString =
                     webApplicationBuilder.Configuration.GetConnectionString(
                         name: "SQLite");
 
-                MVCViewProject.Storage.DbContext.SetConnectionString(
+                StorageLibrary.DbContext.SetConnectionString(
                     connectionString: connectionString);
-                serviceCollection.AddDbContext<MVCViewProject.Storage.DbContext>(
-                    optionsAction:
-                        (Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
-                            dbContextOptionsBuilder) =>
-                        dbContextOptionsBuilder.UseSqlite(
-                            connectionString: connectionString));*/
+                serviceCollection.AddDbContext<StorageLibrary.DbContext>(optionsAction:
+                    (Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
+                        dbContextOptionsBuilder) =>
+                    dbContextOptionsBuilder.UseSqlite(
+                        connectionString: connectionString));
             }
             webApplication = webApplicationBuilder.Build();
         }
