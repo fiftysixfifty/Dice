@@ -39,8 +39,8 @@ public class DbContext: Microsoft.EntityFrameworkCore.DbContext
 
         {
             Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<
-                ModelLibrary.Die.FavoredDie> entityTypeBuilder = modelBuilder.Entity<
-                    ModelLibrary.Die.FavoredDie>();
+                ModelLibrary.Die.FavoredDie> entityTypeBuilder =
+                    modelBuilder.Entity<ModelLibrary.Die.FavoredDie>();
 
             entityTypeBuilder.Property(propertyName:
                 ModelLibrary.Die.FavoredDie.FavoredDieIdFieldName)
@@ -51,6 +51,21 @@ public class DbContext: Microsoft.EntityFrameworkCore.DbContext
             entityTypeBuilder.Property(propertyName:
                 ModelLibrary.Die.FavoredDie.FavorFactorFieldName)
                     .HasColumnName(name: "FavorFactor");
+        }
+        {
+            Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<
+                ModelLibrary.Result.FavoredResultPair> entityTypeBuilder =
+                    modelBuilder.Entity<ModelLibrary.Result.FavoredResultPair>();
+
+            entityTypeBuilder.Property(propertyName:
+                ModelLibrary.Result.FavoredResultPair.FavoredResultPairIdFieldName)
+                    .HasColumnName(name: "FavoredResultPairId");
+            entityTypeBuilder.Property(propertyName:
+                ModelLibrary.Result.FavoredResultPair.FaceFieldName)
+                    .HasColumnName(name: "FirstFace");
+            entityTypeBuilder.Property(propertyName:
+                ModelLibrary.Result.FavoredResultPair.SecondFaceFieldName)
+                    .HasColumnName(name: "SecondFace");
         }
     }
 
