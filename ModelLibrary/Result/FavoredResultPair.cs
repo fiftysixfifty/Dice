@@ -4,10 +4,16 @@
     name: nameof(ModelLibrary.Result.FavoredResultPair))]
 public class FavoredResultPair: ModelLibrary.Result.FavoredResult
 {
+    #region Consts
     public const string
         FavoredResultPairIdFieldName =
             nameof(ModelLibrary.Result.FavoredResultPair.favoredResultPairId),
         SecondFaceFieldName = nameof(ModelLibrary.Result.FavoredResultPair.secondFace);
+    public const string
+        FavoredResultPairIdColumnName =
+            nameof(ModelLibrary.Result.FavoredResultPair.FavoredResultPairId),
+        SecondFaceColumnName = nameof(ModelLibrary.Result.FavoredResultPair.SecondFace);
+    #endregion
 
     #region Fields
     #pragma warning disable CS0649

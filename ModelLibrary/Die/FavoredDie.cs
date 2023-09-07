@@ -9,6 +9,10 @@ public class FavoredDie: ModelLibrary.Die.Die
         FavoredDieIdFieldName = nameof(ModelLibrary.Die.FavoredDie.favoredDieId),
         FavoredFaceFieldName  = nameof(ModelLibrary.Die.FavoredDie.favoredFace ),
         FavorFactorFieldName  = nameof(ModelLibrary.Die.FavoredDie.favorFactor );
+    public const string
+        FavoredDieIdColumnName = nameof(ModelLibrary.Die.FavoredDie.FavoredDieId),
+        FavoredFaceColumnName  = nameof(ModelLibrary.Die.FavoredDie.FavoredFace ),
+        FavorFactorColumnName  = nameof(ModelLibrary.Die.FavoredDie.FavorFactor );
 
     public const byte MaxFactor = 5;
     #endregion

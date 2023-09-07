@@ -12,8 +12,13 @@ public class DbContext: Microsoft.EntityFrameworkCore.DbContext
 {
     private static string? connectionString = null;
 
+    #region Properties
     public Microsoft.EntityFrameworkCore.DbSet<ModelLibrary.Die.FavoredDie>
         FavoredDieDbSet { get; private set; }
+
+    public Microsoft.EntityFrameworkCore.DbSet<ModelLibrary.Result.FavoredResultPair>
+        FavoredResultPairDbSet { get; private set; }
+    #endregion
 
     #region Constructors
     public DbContext(): base() {}
@@ -37,35 +42,51 @@ public class DbContext: Microsoft.EntityFrameworkCore.DbContext
     {
         base.OnModelCreating(modelBuilder: modelBuilder);
 
+        static void AddColumn<TEntity>(
+        Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>
+            entityTypeBuilder,
+        string fieldName, string columnName) where TEntity: class =>
+        entityTypeBuilder.Property(propertyName: fieldName)
+            .HasColumnName(name: columnName);
+
         {
             Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<
                 ModelLibrary.Die.FavoredDie> entityTypeBuilder =
                     modelBuilder.Entity<ModelLibrary.Die.FavoredDie>();
 
-            entityTypeBuilder.Property(propertyName:
-                ModelLibrary.Die.FavoredDie.FavoredDieIdFieldName)
-                    .HasColumnName(name: "FavoredDieId");
-            entityTypeBuilder.Property(propertyName:
-                ModelLibrary.Die.FavoredDie.FavoredFaceFieldName)
-                    .HasColumnName(name: "FavoredFace");
-            entityTypeBuilder.Property(propertyName:
-                ModelLibrary.Die.FavoredDie.FavorFactorFieldName)
-                    .HasColumnName(name: "FavorFactor");
+            AddColumn<ModelLibrary.Die.FavoredDie>(
+                entityTypeBuilder: entityTypeBuilder                                 ,
+                fieldName        : ModelLibrary.Die.FavoredDie.FavoredDieIdFieldName ,
+                columnName       : ModelLibrary.Die.FavoredDie.FavoredDieIdColumnName);
+            AddColumn<ModelLibrary.Die.FavoredDie>(
+                entityTypeBuilder: entityTypeBuilder                                ,
+                fieldName        : ModelLibrary.Die.FavoredDie.FavoredFaceFieldName ,
+                columnName       : ModelLibrary.Die.FavoredDie.FavoredFaceColumnName);
+            AddColumn<ModelLibrary.Die.FavoredDie>(
+                entityTypeBuilder: entityTypeBuilder                                ,
+                fieldName        : ModelLibrary.Die.FavoredDie.FavorFactorFieldName ,
+                columnName       : ModelLibrary.Die.FavoredDie.FavorFactorColumnName);
         }
         {
             Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<
                 ModelLibrary.Result.FavoredResultPair> entityTypeBuilder =
                     modelBuilder.Entity<ModelLibrary.Result.FavoredResultPair>();
 
-            entityTypeBuilder.Property(propertyName:
-                ModelLibrary.Result.FavoredResultPair.FavoredResultPairIdFieldName)
-                    .HasColumnName(name: "FavoredResultPairId");
-            entityTypeBuilder.Property(propertyName:
-                ModelLibrary.Result.FavoredResultPair.FaceFieldName)
-                    .HasColumnName(name: "FirstFace");
-            entityTypeBuilder.Property(propertyName:
-                ModelLibrary.Result.FavoredResultPair.SecondFaceFieldName)
-                    .HasColumnName(name: "SecondFace");
+            AddColumn<ModelLibrary.Result.FavoredResultPair>(
+                entityTypeBuilder: entityTypeBuilder,
+                fieldName        :
+                    ModelLibrary.Result.FavoredResultPair.FavoredResultPairIdFieldName,
+                columnName:
+                    ModelLibrary.Result.FavoredResultPair.FavoredResultPairIdColumnName);
+            AddColumn<ModelLibrary.Result.FavoredResultPair>(
+                entityTypeBuilder: entityTypeBuilder                                   ,
+                fieldName        : ModelLibrary.Result.FavoredResultPair.FaceFieldName ,
+                columnName       : ModelLibrary.Result.FavoredResultPair.FaceColumnName);
+            AddColumn<ModelLibrary.Result.FavoredResultPair>(
+                entityTypeBuilder: entityTypeBuilder,
+                fieldName        :
+                    ModelLibrary.Result.FavoredResultPair.SecondFaceFieldName,
+                columnName: ModelLibrary.Result.FavoredResultPair.SecondFaceColumnName);
         }
     }
 

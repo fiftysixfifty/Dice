@@ -2,7 +2,9 @@
 
 public class Result
 {
-    public const string FaceFieldName = nameof(ModelLibrary.Result.Result.face);
+    public const string
+        FaceFieldName  = nameof(ModelLibrary.Result.Result.face),
+        FaceColumnName = "FirstFace"                            ;
 
     private byte face;
 
