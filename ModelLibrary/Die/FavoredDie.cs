@@ -8,7 +8,7 @@ public class FavoredDie: ModelLibrary.Die.Die
 
     #region Properties
     [System.ComponentModel.DataAnnotations.KeyAttribute()]
-    public int Id { get; set; }
+    public int FavoredDieId { get; set; }
 
     public byte FavoredFace { get; set; }
     public byte FavorFactor { get; set; }
