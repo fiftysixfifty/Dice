@@ -30,45 +30,49 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (ModelLibrary.Result.FavoredResultPair result in this.Model)
+        @foreach (ModelLibrary.Result.FavoredResultPair favoredResultPair in this.Model)
         {
             <tr>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        result.FavoredDie.FavoredFace))
+                        null == favoredResultPair.FavoredDie ? 0 :
+                            favoredResultPair.FavoredDie.FavoredFace))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        result.FavoredDie.FavorFactor))
+                        null == favoredResultPair.FavoredDie ? 0 :
+                            favoredResultPair.FavoredDie.FavorFactor))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        result.Face))
+                        favoredResultPair.Face))
                 </td>
 
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        result.SecondFavoredDie.FavoredFace))
+                        null == favoredResultPair.SecondFavoredDie ? 0 :
+                            favoredResultPair.SecondFavoredDie.FavoredFace))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        result.SecondFavoredDie.FavorFactor))
+                        null == favoredResultPair.SecondFavoredDie ? 0 :
+                            favoredResultPair.SecondFavoredDie.FavorFactor))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        result.SecondFace))
+                        favoredResultPair.SecondFace))
                 </td>
             </tr>
         }
