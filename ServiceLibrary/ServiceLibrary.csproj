@@ -8,5 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
+    <ProjectReference Include="..\StorageLibrary\StorageLibrary.csproj" />
   </ItemGroup>
 </Project>
