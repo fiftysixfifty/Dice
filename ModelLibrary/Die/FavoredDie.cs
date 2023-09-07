@@ -4,14 +4,29 @@
     name: nameof(ModelLibrary.Die.FavoredDie))]
 public class FavoredDie: ModelLibrary.Die.Die
 {
+    #region Consts
+    public const string
+        FavoredDieIdFieldName = nameof(ModelLibrary.Die.FavoredDie.favoredDieId),
+        FavoredFaceFieldName  = nameof(ModelLibrary.Die.FavoredDie.favoredFace ),
+        FavorFactorFieldName  = nameof(ModelLibrary.Die.FavoredDie.favorFactor );
+
     public const byte MaxFactor = 5;
+    #endregion
+
+    #region Fields
+    #pragma warning disable CS0649
+    private int favoredDieId;
+    #pragma warning restore CS0649
+
+    private byte favoredFace, favorFactor;
+    #endregion
 
     #region Properties
     [System.ComponentModel.DataAnnotations.KeyAttribute()]
-    public int FavoredDieId { get; set; }
+    public int FavoredDieId => this.favoredDieId;
 
-    public byte FavoredFace { get; set; }
-    public byte FavorFactor { get; set; }
+    public byte FavoredFace => this.favoredFace;
+    public byte FavorFactor => this.favorFactor;
     #endregion
 
     #region Constructors
@@ -20,8 +35,8 @@ public class FavoredDie: ModelLibrary.Die.Die
     public FavoredDie(System.Random random, byte favoredFace, byte favorFactor):
     base(random: random)
     {
-        this.FavoredFace = ModelLibrary.Die.FavoredDie.ValidFace  (face  : favoredFace);
-        this.FavorFactor = ModelLibrary.Die.FavoredDie.ValidFactor(factor: favorFactor);
+        this.favoredFace = ModelLibrary.Die.FavoredDie.ValidFace  (face  : favoredFace);
+        this.favorFactor = ModelLibrary.Die.FavoredDie.ValidFactor(factor: favorFactor);
     }
     #endregion
 
@@ -33,7 +48,7 @@ public class FavoredDie: ModelLibrary.Die.Die
     {
         byte resultFaceArrayCount;
         {
-            byte extraFaceCount = (byte) (this.FavorFactor - 1);
+            byte extraFaceCount = (byte) (this.favorFactor - 1);
 
             resultFaceArrayCount = (byte)
                 (ModelLibrary.Die.FavoredDie.MaxFace + extraFaceCount);
@@ -44,7 +59,7 @@ public class FavoredDie: ModelLibrary.Die.Die
             resultFaceArray[i] = (byte) (i + 1);
 
         for (byte i = ModelLibrary.Die.FavoredDie.MaxFace; i < resultFaceArrayCount; i++)
-            resultFaceArray[i] = this.FavoredFace;
+            resultFaceArray[i] = this.favoredFace;
 
         return resultFaceArray[this.Random.Next(maxValue: resultFaceArrayCount)];
     }

@@ -6,7 +6,6 @@ public class Die
 
     private System.Random? random = null;
 
-    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
     private protected System.Random Random => this.random ??= new System.Random();
 
     #region Constructors
