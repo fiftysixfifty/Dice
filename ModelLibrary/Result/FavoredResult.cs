@@ -2,6 +2,7 @@
 
 public class FavoredResult: ModelLibrary.Result.Result
 {
+    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
     public ModelLibrary.Die.FavoredDie FavoredDie =>
         (this.Die as ModelLibrary.Die.FavoredDie)!;
 
