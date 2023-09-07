@@ -1,9 +1,10 @@
-﻿// For UseSqlite():
+﻿#region Usings
+// For UseSqlite():
 using static Microsoft.EntityFrameworkCore.SqliteDbContextOptionsBuilderExtensions;
 
 // For HasColumnName():
-using static Microsoft.EntityFrameworkCore.Metadata.Builders.PropertyBuilder;
-using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.RelationalPropertyBuilderExtensions;
+#endregion
 
 namespace StorageLibrary;
 
