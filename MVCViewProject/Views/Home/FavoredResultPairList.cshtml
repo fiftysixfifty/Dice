@@ -37,15 +37,13 @@
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        null == favoredResultPair.FirstFavoredDie ? 0 :
-                            favoredResultPair.FirstFavoredDie.FavoredFace))
+                        favoredResultPair.FirstFavoredFace))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        null == favoredResultPair.FirstFavoredDie ? 0 :
-                            favoredResultPair.FirstFavoredDie.FavorFactor))
+                        favoredResultPair.FirstFavorFactor))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
@@ -58,15 +56,13 @@
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        null == favoredResultPair.SecondFavoredDie ? 0 :
-                            favoredResultPair.SecondFavoredDie.FavoredFace))
+                        favoredResultPair.SecondFavoredFace))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultPairList
                             favoredResultPairList) =>
-                        null == favoredResultPair.SecondFavoredDie ? 0 :
-                            favoredResultPair.SecondFavoredDie.FavorFactor))
+                        favoredResultPair.SecondFavorFactor))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:

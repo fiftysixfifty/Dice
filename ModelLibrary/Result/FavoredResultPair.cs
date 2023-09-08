@@ -42,6 +42,22 @@ public class FavoredResultPair: ModelLibrary.Result.FavoredResult
         name: nameof(ModelLibrary.Result.FavoredResultPair.SecondFavoredDieId))]
     public ModelLibrary.Die.FavoredDie? SecondFavoredDie { get; init; }
     #endregion
+
+    #region Not Mapped Properties
+    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
+    public byte FirstFavoredFace => this.FavoredFace;
+
+    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
+    public byte FirstFavorFactor => this.FavorFactor;
+
+    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
+    public byte SecondFavoredFace =>
+    null == this.SecondFavoredDie ? (byte) 0 : this.SecondFavoredDie.FavoredFace;
+
+    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
+    public byte SecondFavorFactor =>
+    null == this.SecondFavoredDie ? (byte) 0 : this.SecondFavoredDie.FavorFactor;
+    #endregion
     #endregion
 
     #region Constructors

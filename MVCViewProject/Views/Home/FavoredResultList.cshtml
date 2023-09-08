@@ -28,14 +28,12 @@
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultList favoredResultList) =>
-                        null == favoredResult.FavoredDie ? 0 :
-                            favoredResult.FavoredDie.FavoredFace))
+                        favoredResult.FavoredFace))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
                         (ModelLibrary.Result.FavoredResultList favoredResultList) =>
-                        null == favoredResult.FavoredDie ? 0 :
-                            favoredResult.FavoredDie.FavorFactor))
+                        favoredResult.FavorFactor))
                 </td>
                 <td>
                     @(this.Html.DisplayFor(expression:
