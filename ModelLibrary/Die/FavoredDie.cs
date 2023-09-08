@@ -31,6 +31,20 @@ public class FavoredDie: ModelLibrary.Die.Die
 
     public byte FavoredFace => this.favoredFace;
     public byte FavorFactor => this.favorFactor;
+
+    #region Navigation Properties
+    [System.ComponentModel.DataAnnotations.Schema.InversePropertyAttribute(
+        property: nameof(ModelLibrary.Result.FavoredResultPair.FirstFavoredDie))]
+    public System.Collections.Generic.ICollection<
+        ModelLibrary.Result.FavoredResultPair>? FirstFavoredResultPairCollection
+    { get; set; }
+
+    [System.ComponentModel.DataAnnotations.Schema.InversePropertyAttribute(
+        property: nameof(ModelLibrary.Result.FavoredResultPair.SecondFavoredDie))]
+    public System.Collections.Generic.ICollection<
+        ModelLibrary.Result.FavoredResultPair>? SecondFavoredResultPairCollection
+    { get; set; }
+    #endregion
     #endregion
 
     #region Constructors

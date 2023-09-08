@@ -6,22 +6,20 @@ public class Result
         FaceFieldName  = nameof(ModelLibrary.Result.Result.face),
         FaceColumnName = "FirstFace"                            ;
 
-    private byte face;
-
-    #region Properties
-    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
-    public ModelLibrary.Die.Die? Die { get; }
+    #region Fields
+    private protected ModelLibrary.Die.Die? die ;
+    private           byte                  face;
+    #endregion
 
     public byte Face => this.face;
-    #endregion
 
     #region Constructors
     public Result(): base() {}
 
     public Result(ModelLibrary.Die.Die die): base()
     {
-        this.Die  = die                                                  ;
-        this.face = ModelLibrary.Die.Die.ValidFace(face: this.Die.Roll());
+        this.die  = die                                                  ;
+        this.face = ModelLibrary.Die.Die.ValidFace(face: this.die.Roll());
     }
     #endregion
 }

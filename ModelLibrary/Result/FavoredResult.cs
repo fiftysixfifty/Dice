@@ -3,8 +3,11 @@
 public class FavoredResult: ModelLibrary.Result.Result
 {
     [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
-    public ModelLibrary.Die.FavoredDie? FavoredDie =>
-        this.Die as ModelLibrary.Die.FavoredDie;
+    public ModelLibrary.Die.FavoredDie? FavoredDie
+    {
+                          get  => this.die as ModelLibrary.Die.FavoredDie;
+        private protected init => this.die = value                       ;
+    }
 
     #region Constructors
     public FavoredResult(): base() {}

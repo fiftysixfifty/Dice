@@ -26,13 +26,21 @@ public class FavoredResultPair: ModelLibrary.Result.FavoredResult
     [System.ComponentModel.DataAnnotations.KeyAttribute()]
     public int FavoredResultPairId => this.favoredResultPairId;
 
-    [System.ComponentModel.DataAnnotations.Schema.NotMappedAttribute()]
-    public ModelLibrary.Die.FavoredDie? SecondFavoredDie { get; }
-
     public int FirstFavoredDieId  { get; set; }
     public int SecondFavoredDieId { get; set; }
 
     public byte SecondFace => this.secondFace;
+
+    #region Navigation Properties
+    [System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute(
+        name: nameof(ModelLibrary.Result.FavoredResultPair.FirstFavoredDieId))]
+    public ModelLibrary.Die.FavoredDie? FirstFavoredDie
+    { get => this.FavoredDie; init => this.FavoredDie = value; }
+
+    [System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute(
+        name: nameof(ModelLibrary.Result.FavoredResultPair.SecondFavoredDieId))]
+    public ModelLibrary.Die.FavoredDie? SecondFavoredDie { get; init; }
+    #endregion
     #endregion
 
     #region Constructors
