@@ -2,6 +2,9 @@
 // For UseSqlite():
 using static Microsoft.EntityFrameworkCore.SqliteDbContextOptionsBuilderExtensions;
 
+// For Where() and ToList():
+using static System.Linq.Enumerable;
+
 // For HasColumnName():
 using static Microsoft.EntityFrameworkCore.RelationalPropertyBuilderExtensions;
 #endregion
@@ -41,6 +44,20 @@ public class DbContext: Microsoft.EntityFrameworkCore.DbContext
     Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder: modelBuilder);
+
+        foreach (Microsoft.EntityFrameworkCore.Metadata.IMutableEntityType
+        mutableEntityType in modelBuilder.Model.GetEntityTypes())
+            mutableEntityType.GetForeignKeys()
+                .Where((Microsoft.EntityFrameworkCore.Metadata.IMutableForeignKey
+                        mutableForeignKey) =>
+                    !mutableForeignKey.IsOwnership &&
+                        mutableForeignKey.DeleteBehavior !=
+                            Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict)
+                .ToList()
+                .ForEach((Microsoft.EntityFrameworkCore.Metadata.IMutableForeignKey
+                        mutableForeignKey) =>
+                    mutableForeignKey.DeleteBehavior =
+                        Microsoft.EntityFrameworkCore.DeleteBehavior.Restrict);
 
         static void AddColumn<TEntity>(
         Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TEntity>
