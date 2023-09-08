@@ -29,6 +29,7 @@ public class FavoredResultPair: ModelLibrary.Result.FavoredResult
     public int FirstFavoredDieId  { get; set; }
     public int SecondFavoredDieId { get; set; }
 
+    public byte FirstFace  => this.Face      ;
     public byte SecondFace => this.secondFace;
 
     #region Navigation Properties
